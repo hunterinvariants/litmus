@@ -2,14 +2,14 @@
 
 *A false-positive-aware benchmark for smart-contract vulnerability detection.*
 
-> Working name — provisional.
+> Working name - provisional.
 
 ## Why
 
-Automated and AI-assisted auditors are almost always measured on one axis: **recall** —
+Automated and AI-assisted auditors are almost always measured on one axis: **recall** -
 *did it find the bug?* But the cost that actually breaks triage is the other axis:
 **false positives.** A tool that reports fifty "criticals" to surface one real bug is worse
-than useless — it buries the signal and burns reviewer time. Open contests routinely collect
+than useless - it buries the signal and burns reviewer time. Open contests routinely collect
 thousands of submissions that collapse, after judging, to a handful of unique valid issues;
 the rest is noise.
 
@@ -19,10 +19,10 @@ No widely-used benchmark scores that noise. Litmus does.
 
 A corpus of smart-contract vulnerabilities where every label is **proven, not asserted**:
 
-- **A scan target** — the contract source a tool analyses.
-- **A runnable Foundry PoC** — an executable exploit. A *passing* test means the bug is real.
+- **A scan target** - the contract source a tool analyses.
+- **A runnable Foundry PoC** - an executable exploit. A *passing* test means the bug is real.
   The ground truth is justified by code that runs, not by a human's tag.
-- **Machine-readable ground truth** — the exact location and class of each vulnerability.
+- **Machine-readable ground truth** - the exact location and class of each vulnerability.
 
 …plus a **scoring harness** any tool can be run against, reporting precision, recall, and the
 headline metric: **false alarms per case.**
@@ -47,11 +47,11 @@ The findings format a tool must emit is defined in [SPEC.md](SPEC.md); an exampl
 ## Design principle
 
 **Every ground-truth label is backed by an executable PoC.** This is what separates Litmus
-from static vulnerability datasets: a label isn't trusted because someone tagged it — it's
+from static vulnerability datasets: a label isn't trusted because someone tagged it - it's
 trusted because `forge test` reproduces the exploit on demand. A tool's recall is measured
 against bugs that demonstrably exist, and its noise is measured against the same fixed corpus.
 
-## Status — v0
+## Status - v0
 
 This is the v0 corpus: the case format, the scoring harness, and four cases wired end-to-end —
 three synthetic plus one real, on-chain exploit. The corpus scales from here.
@@ -63,8 +63,8 @@ three synthetic plus one real, on-chain exploit. The corpus scales from here.
 | 003  | accounting-desync | cached total vs. fee-on-transfer real balance (synthetic) | runnable |
 | 004  | accounting-desync (missing solvency check) | **Euler Finance — real, $197M** | fork (needs `ETH_RPC_URL`) |
 
-The corpus already includes one **real, on-chain exploit** — the March 2023 **Euler Finance
-$197M** loss — reproduced against deployed mainnet bytecode, not a mock. Every other label is a
+The corpus already includes one **real, on-chain exploit** - the March 2023 **Euler Finance
+$197M** loss - reproduced against deployed mainnet bytecode, not a mock. Every other label is a
 self-contained synthetic reproduction of a known bug class.
 
 **Roadmap:** grow the corpus across the eight-class taxonomy (reentrancy/temporal,
@@ -72,7 +72,7 @@ rounding/precision, economic/game-theory, oracle, init/upgrade, accounting-desyn
 signature/replay, liveness/DoS); add more real historical exploits alongside Euler; and ship
 output adapters for common static and AI tools.
 
-## First result — stock Slither
+## First result - stock Slither
 
 Stock Slither (standard detectors, no plugins), scored through the harness on the
 source-analyzable cases:
@@ -81,7 +81,7 @@ source-analyzable cases:
 |------|:------:|:---------:|:-----------------------:|
 | Slither (stock) | 0.33 | 0.14 | 2.0 |
 
-It catches the **read-only reentrancy** — pattern-matching is exactly its strength — but is
+It catches the **read-only reentrancy** - pattern-matching is exactly its strength - but is
 **blind to the inflation attack (001) and the accounting-desync (003)**: it ships no detector
 for either, because both require reasoning about economic intent rather than syntax. Of three
 PoC-proven exploits it flags one, and none of its other results points at the two that actually
