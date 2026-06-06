@@ -3,3 +3,7 @@ cache/
 lib/
 broadcast/
 .env
+
+# tool-run artifacts (a local Slither may have private detector packs installed) -- never commit
+slither-out.json
+slither-findings.json

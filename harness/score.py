@@ -92,9 +92,15 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--findings", required=True)
     ap.add_argument("--bench", default=os.path.join(os.path.dirname(__file__), "..", "bench"))
+    ap.add_argument("--only", default="",
+                    help="comma-separated case ids to score against (e.g. for a static tool that "
+                         "cannot run the fork-cases). Default: all cases.")
     args = ap.parse_args()
 
     gt = load_ground_truth(args.bench)
+    if args.only:
+        keep = set(s.strip() for s in args.only.split(",") if s.strip())
+        gt = {k: v for k, v in gt.items() if k in keep}
     num_cases = len(gt)
     total_labels = sum(len(v) for v in gt.values())
 

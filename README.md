@@ -72,6 +72,35 @@ rounding/precision, economic/game-theory, oracle, init/upgrade, accounting-desyn
 signature/replay, liveness/DoS); add more real historical exploits alongside Euler; and ship
 output adapters for common static and AI tools.
 
+## First result — stock Slither
+
+Stock Slither (standard detectors, no plugins), scored through the harness on the
+source-analyzable cases:
+
+| Tool | recall | precision | FP rate (alarms / case) |
+|------|:------:|:---------:|:-----------------------:|
+| Slither (stock) | 0.33 | 0.14 | 2.0 |
+
+It catches the **read-only reentrancy** — pattern-matching is exactly its strength — but is
+**blind to the inflation attack (001) and the accounting-desync (003)**: it ships no detector
+for either, because both require reasoning about economic intent rather than syntax. Of three
+PoC-proven exploits it flags one, and none of its other results points at the two that actually
+drain the vault.
+
+(In fairness, a couple of those extra flags are legitimate low-severity smells, not pure noise —
+but none is the exploitable bug. That's the point: recall on *real impact* is what matters, and a
+low false-positive rate is what makes a tool's output worth reading.)
+
+Reproduce:
+
+```
+slither . --filter-paths "lib/|test/" --json slither-out.json
+python harness/adapters/slither_to_litmus.py slither-out.json > slither-findings.json
+python harness/score.py --findings slither-findings.json --only case001,case002,case003
+```
+
+AI-assisted auditors next.
+
 ## License
 
 MIT. Contributions welcome — see [SPEC.md](SPEC.md) for the case format.
