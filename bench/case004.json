@@ -1,0 +1,35 @@
+{
+  "id": "case004",
+  "title": "Euler Finance -- donateToReserves omits the solvency check (the $197M root cause)",
+  "vuln_class": "accounting-desync",
+  "class_id": 6,
+  "severity": "High",
+  "source": {
+    "type": "real",
+    "protocol": "Euler Finance",
+    "event": "March 2023 exploit",
+    "loss_usd": 197000000,
+    "chain": "ethereum",
+    "fork_block": 16817000,
+    "contracts": {
+      "euler": "0x27182842E098f60e3D576794A5bFFb0777E025d3",
+      "markets": "0x3520d5a913427E6F0D6A83E07ccD4A4da316e4d3",
+      "exec": "0x59828FdF7ee634AaaD3f58B19fDBa3b03E2D9d80",
+      "dai": "0x6B175474E89094C44Da98b954EedeAC495271d0F"
+    },
+    "reference": "euler-xyz/euler-contracts, contracts/modules/EToken.sol (pre-hack)"
+  },
+  "scan_target": "reference/EToken.donateToReserves.sol (abridged excerpt of real deployed code)",
+  "poc": "test/case004_euler_donate_insolvency/EulerDonatePoC.t.sol",
+  "poc_test": "test_donateToReserves_createsBadDebt_withoutRevert",
+  "requires_env": ["ETH_RPC_URL"],
+  "expected": "pass",
+  "ground_truth": [
+    {
+      "contract": "EToken",
+      "function": "donateToReserves",
+      "class": "accounting-desync",
+      "description": "donateToReserves() burns the caller's eToken (collateral) balance but, unlike every other balance-reducing function in EToken (withdraw/transfer/mint/burn all call checkLiquidity), omits the post-operation solvency check. An account holding debt can donate its entire collateral to reserves and become insolvent without the transaction reverting, minting bad debt. This is the root cause of the March 2023 ~$197M Euler exploit; the attacker then self-liquidated the insolvent position for profit."
+    }
+  ]
+}

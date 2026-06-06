@@ -1,0 +1,24 @@
+{
+  "id": "case003",
+  "title": "Cached accounting desync with a fee-on-transfer asset",
+  "vuln_class": "accounting-desync",
+  "class_id": 6,
+  "severity": "High",
+  "source": {
+    "type": "synthetic",
+    "inspired_by": "Vaults that cache totals from requested amounts and mishandle fee-on-transfer / rebasing tokens, breaking the assets==accounting invariant"
+  },
+  "scan_target": "src/case003_accounting_desync/CachedVault.sol",
+  "poc": "test/case003_accounting_desync/DesyncPoC.t.sol",
+  "poc_test": "test_feeOnTransferDesyncBricksLastWithdrawer",
+  "expected": "pass",
+  "ground_truth": [
+    {
+      "contract": "CachedVault",
+      "function": "deposit",
+      "lines": [25, 29],
+      "class": "accounting-desync",
+      "description": "cachedTotal is incremented by the requested deposit amount rather than the measured balance delta. With a fee-on-transfer token the vault receives less than requested, so the cache overstates real assets; early withdrawers are paid in full and the final withdrawer's transfer reverts for lack of funds (bricked)."
+    }
+  ]
+}

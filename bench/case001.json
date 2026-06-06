@@ -1,0 +1,24 @@
+{
+  "id": "case001",
+  "title": "ERC4626 first-depositor share inflation",
+  "vuln_class": "rounding-precision",
+  "class_id": 2,
+  "severity": "High",
+  "source": {
+    "type": "synthetic",
+    "inspired_by": "Classic ERC4626 / first-depositor inflation attack (early vaults without virtual shares)"
+  },
+  "scan_target": "src/case001_erc4626_inflation/NaiveVault.sol",
+  "poc": "test/case001_erc4626_inflation/InflationPoC.t.sol",
+  "poc_test": "test_firstDepositorInflationStealsVictimDeposit",
+  "expected": "pass",
+  "ground_truth": [
+    {
+      "contract": "NaiveVault",
+      "function": "deposit",
+      "lines": [27, 37],
+      "class": "rounding-precision",
+      "description": "Shares are minted pro-rata against live totalAssets() with no virtual-shares / dead-shares offset. The first depositor mints 1 share, donates assets directly to inflate the share price, and a later deposit rounds down to zero shares, letting the attacker redeem and capture the victim's assets."
+    }
+  ]
+}

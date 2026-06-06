@@ -1,0 +1,24 @@
+{
+  "id": "case002",
+  "title": "Read-only reentrancy in an LP share-price oracle",
+  "vuln_class": "reentrancy",
+  "class_id": 1,
+  "severity": "High",
+  "source": {
+    "type": "synthetic",
+    "inspired_by": "Curve-style read-only reentrancy that drained lending markets pricing LP tokens via a reentrancy-unsafe virtual price"
+  },
+  "scan_target": "src/case002_readonly_reentrancy/LPVault.sol",
+  "poc": "test/case002_readonly_reentrancy/ReentrancyPoC.t.sol",
+  "poc_test": "test_readOnlyReentrancyManipulatesPrice",
+  "expected": "pass",
+  "ground_truth": [
+    {
+      "contract": "LPVault",
+      "function": "withdraw",
+      "lines": [29, 35],
+      "class": "reentrancy",
+      "description": "withdraw() transfers ETH before decrementing shares/totalShares (a checks-effects-interactions violation). During the recipient callback the balance is already reduced while totalShares is not, so pricePerShare() -- read by integrators as an oracle -- returns a manipulated value (~50% of true). A protocol consuming it can be made to mis-price collateral and mis-liquidate."
+    }
+  ]
+}

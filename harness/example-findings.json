@@ -1,0 +1,45 @@
+{
+  "tool": "example-tool",
+  "findings": [
+    {
+      "case_id": "case001",
+      "contract": "NaiveVault",
+      "function": "deposit",
+      "vuln_class": "rounding-precision",
+      "severity": "High",
+      "note": "first-depositor inflation (true positive)"
+    },
+    {
+      "case_id": "case002",
+      "contract": "LPVault",
+      "function": "withdraw",
+      "vuln_class": "reentrancy",
+      "severity": "High",
+      "note": "read-only reentrancy via CEI violation (true positive)"
+    },
+    {
+      "case_id": "case003",
+      "contract": "CachedVault",
+      "function": "deposit",
+      "vuln_class": "accounting",
+      "severity": "High",
+      "note": "fee-on-transfer cache desync -- 'accounting' alias normalises to accounting-desync (true positive)"
+    },
+    {
+      "case_id": "case004",
+      "contract": "EToken",
+      "function": "donateToReserves",
+      "vuln_class": "accounting-desync",
+      "severity": "High",
+      "note": "missing checkLiquidity solvency guard -- Euler $197M (true positive)"
+    },
+    {
+      "case_id": "case001",
+      "contract": "NaiveVault",
+      "function": "redeem",
+      "vuln_class": "reentrancy",
+      "severity": "Medium",
+      "note": "spurious reentrancy claim -- no such bug (false positive)"
+    }
+  ]
+}
