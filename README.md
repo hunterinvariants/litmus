@@ -53,7 +53,7 @@ against bugs that demonstrably exist, and its noise is measured against the same
 
 ## Status - v0
 
-This is the v0 corpus: the case format, the scoring harness, and four cases wired end-to-end —
+This is the v0 corpus: the case format, the scoring harness, and four cases wired end-to-end -
 three synthetic plus one real, on-chain exploit. The corpus scales from here.
 
 | Case | Class | Source | PoC |
