@@ -78,9 +78,9 @@ A finding **matches** a ground-truth label iff:
 
 From the matches:
 
-- **True positive (TP)** — a ground-truth label matched by at least one finding.
-- **False negative (FN)** — a ground-truth label matched by no finding.
-- **False positive (FP)** — a finding that matches *no* ground-truth label in its case.
+- **True positive (TP)** - a ground-truth label matched by at least one finding.
+- **False negative (FN)** - a ground-truth label matched by no finding.
+- **False positive (FP)** - a finding that matches *no* ground-truth label in its case.
 - Extra findings matching an already-matched label are **duplicates** (reported, not penalised).
 
 Metrics:
