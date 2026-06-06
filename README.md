@@ -87,7 +87,7 @@ for either, because both require reasoning about economic intent rather than syn
 PoC-proven exploits it flags one, and none of its other results points at the two that actually
 drain the vault.
 
-(In fairness, a couple of those extra flags are legitimate low-severity smells, not pure noise —
+(In fairness, a couple of those extra flags are legitimate low-severity smells, not pure noise -
 but none is the exploitable bug. That's the point: recall on *real impact* is what matters, and a
 low false-positive rate is what makes a tool's output worth reading.)
 
@@ -103,4 +103,4 @@ AI-assisted auditors next.
 
 ## License
 
-MIT. Contributions welcome — see [SPEC.md](SPEC.md) for the case format.
+MIT. Contributions welcome - see [SPEC.md](SPEC.md) for the case format.
