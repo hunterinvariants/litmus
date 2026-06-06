@@ -1,4 +1,4 @@
-# Litmus — case &amp; scoring specification
+# Litmus - case &amp; scoring specification
 
 ## Repository layout
 
@@ -9,7 +9,7 @@ bench/  <case>.json     machine-readable metadata + ground truth
 harness/score.py        the scoring harness
 ```
 
-## Case metadata — `bench/<case>.json`
+## Case metadata - `bench/<case>.json`
 
 ```json
 {
@@ -43,7 +43,7 @@ skipped automatically when that RPC is not configured, so the synthetic corpus a
 offline. The `scan_target` of a `real` case is an abridged excerpt of the deployed source under
 `reference/` (not compiled); the proof of the label is the fork PoC running against live bytecode.
 
-## Tool output — what a scored tool must emit
+## Tool output - what a scored tool must emit
 
 A single JSON document:
 
