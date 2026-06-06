@@ -1,10 +1,10 @@
-# Litmus - case &amp; scoring specification
+# Litmus - case & scoring specification
 
 ## Repository layout
 
 ```
-src/    <case>/         scan targets — the contract sources a tool analyses
-test/   <case>/         runnable Foundry PoCs — a passing test proves the bug
+src/    <case>/         scan targets -- the contract sources a tool analyses
+test/   <case>/         runnable Foundry PoCs -- a passing test proves the bug
 bench/  <case>.json     machine-readable metadata + ground truth
 harness/score.py        the scoring harness
 ```
@@ -65,7 +65,7 @@ A single JSON document:
 ```
 
 `function` and `lines` are optional but improve match precision. `vuln_class` is matched
-through an alias table (see `harness/score.py`) so a tool is not penalised for vocabulary —
+through an alias table (see `harness/score.py`) so a tool is not penalised for vocabulary -- 
 `reentrancy` == `temporal`, `rounding` == `precision`, `desync` == `accounting`, and so on.
 
 ## Scoring
@@ -88,7 +88,7 @@ Metrics:
 - `precision = TP / (TP + FP)`
 - `recall    = TP / (TP + FN)`
 - `F1        = harmonic mean of precision and recall`
-- **`FP rate = FP / number-of-cases`** — average false alarms per case, the noise-floor metric.
+- **`FP rate = FP / number-of-cases`** -- average false alarms per case, the noise-floor metric.
 
 A strong tool maximises recall **while keeping the FP rate low.** Recall alone is gameable by
 flagging everything; Litmus is designed so that strategy scores badly.
