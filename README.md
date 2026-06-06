@@ -61,7 +61,7 @@ three synthetic plus one real, on-chain exploit. The corpus scales from here.
 | 001  | rounding / precision | ERC4626 first-depositor inflation (synthetic) | runnable |
 | 002  | reentrancy / temporal | read-only reentrancy in an LP price oracle (synthetic) | runnable |
 | 003  | accounting-desync | cached total vs. fee-on-transfer real balance (synthetic) | runnable |
-| 004  | accounting-desync (missing solvency check) | **Euler Finance — real, $197M** | fork (needs `ETH_RPC_URL`) |
+| 004  | accounting-desync (missing solvency check) | **Euler Finance - real, $197M** | fork (needs `ETH_RPC_URL`) |
 
 The corpus already includes one **real, on-chain exploit** - the March 2023 **Euler Finance
 $197M** loss - reproduced against deployed mainnet bytecode, not a mock. Every other label is a
