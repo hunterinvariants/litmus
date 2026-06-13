@@ -1,15 +1,15 @@
-# Litmus - case & scoring specification
+# Litmus — case &amp; scoring specification
 
 ## Repository layout
 
 ```
-src/    <case>/         scan targets -- the contract sources a tool analyses
-test/   <case>/         runnable Foundry PoCs -- a passing test proves the bug
+src/    <case>/         scan targets — the contract sources a tool analyses
+test/   <case>/         runnable Foundry PoCs — a passing test proves the bug
 bench/  <case>.json     machine-readable metadata + ground truth
 harness/score.py        the scoring harness
 ```
 
-## Case metadata - `bench/<case>.json`
+## Case metadata — `bench/<case>.json`
 
 ```json
 {
@@ -43,7 +43,7 @@ skipped automatically when that RPC is not configured, so the synthetic corpus a
 offline. The `scan_target` of a `real` case is an abridged excerpt of the deployed source under
 `reference/` (not compiled); the proof of the label is the fork PoC running against live bytecode.
 
-## Tool output - what a scored tool must emit
+## Tool output — what a scored tool must emit
 
 A single JSON document:
 
@@ -65,7 +65,7 @@ A single JSON document:
 ```
 
 `function` and `lines` are optional but improve match precision. `vuln_class` is matched
-through an alias table (see `harness/score.py`) so a tool is not penalised for vocabulary -- 
+through an alias table (see `harness/score.py`) so a tool is not penalised for vocabulary —
 `reentrancy` == `temporal`, `rounding` == `precision`, `desync` == `accounting`, and so on.
 
 ## Scoring
@@ -78,9 +78,9 @@ A finding **matches** a ground-truth label iff:
 
 From the matches:
 
-- **True positive (TP)** - a ground-truth label matched by at least one finding.
-- **False negative (FN)** - a ground-truth label matched by no finding.
-- **False positive (FP)** - a finding that matches *no* ground-truth label in its case.
+- **True positive (TP)** — a ground-truth label matched by at least one finding.
+- **False negative (FN)** — a ground-truth label matched by no finding.
+- **False positive (FP)** — a finding that matches *no* ground-truth label in its case.
 - Extra findings matching an already-matched label are **duplicates** (reported, not penalised).
 
 Metrics:
@@ -88,7 +88,7 @@ Metrics:
 - `precision = TP / (TP + FP)`
 - `recall    = TP / (TP + FN)`
 - `F1        = harmonic mean of precision and recall`
-- **`FP rate = FP / number-of-cases`** -- average false alarms per case, the noise-floor metric.
+- **`FP rate = FP / number-of-cases`** — average false alarms per case, the noise-floor metric.
 
-A strong tool maximises recall **while keeping the FP rate low.** Recall alone is gameable by
-flagging everything; Litmus is designed so that strategy scores badly.
+A strong tool keeps recall high while holding the FP rate low. Recall alone can be gamed by flagging
+everything, and the FP-rate metric is what makes that strategy score poorly.
