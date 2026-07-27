@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/hunterinvariants/litmus/schema/case.v1.schema.json",
+  "type": "object",
+  "required": ["schema_version", "id", "title", "vuln_class", "severity", "source", "scan_target", "ground_truth"],
+  "properties": {
+    "schema_version": { "const": "1.0.0" },
+    "id": { "pattern": "^case[0-9]{3}$" },
+    "title": { "type": "string", "minLength": 1 },
+    "vuln_class": { "type": "string", "minLength": 1 },
+    "severity": { "enum": ["Critical", "High", "Medium", "Low", "Informational", "Mixed"] },
+    "source": {
+      "type": "object",
+      "required": ["type"],
+      "properties": {
+        "type": { "enum": ["synthetic", "real", "external-corpus"] },
+        "repository": { "type": "string" },
+        "commit": { "pattern": "^[0-9a-f]{40}$" }
+      }
+    },
+    "scan_target": { "type": "string", "minLength": 1 },
+    "ground_truth": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["contract", "class", "description"],
+        "properties": {
+          "contract": { "type": "string", "minLength": 1 },
+          "function": { "type": ["string", "null"] },
+          "class": { "type": "string", "minLength": 1 },
+          "description": { "type": "string", "minLength": 1 }
+        }
+      }
+    }
+  }
+}

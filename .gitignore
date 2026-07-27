@@ -7,3 +7,5 @@ broadcast/
 # tool-run artifacts (a local Slither may have private detector packs installed) -- never commit
 slither-out.json
 slither-findings.json
+__pycache__/
+*.pyc

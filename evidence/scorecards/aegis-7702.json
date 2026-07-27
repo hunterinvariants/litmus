@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0.0",
+  "tool": "slither-eip7702",
+  "scope": {
+    "case_ids": [
+      "case005"
+    ],
+    "cases": 1,
+    "ground_truth_labels": 18,
+    "findings": 18
+  },
+  "counts": {
+    "true_positive": 18,
+    "false_positive": 0,
+    "false_negative": 0,
+    "duplicates": 0
+  },
+  "metrics": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "false_positives_per_case": 0.0
+  },
+  "limitations": [
+    "Scores apply only to the selected Litmus cases and labels.",
+    "A score is not an audit, safety certificate, or production-readiness proof."
+  ]
+}

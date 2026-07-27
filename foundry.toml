@@ -1,5 +1,7 @@
 # Litmus — runnable PoCs justify every ground-truth label. `forge test` proves the corpus.
 [profile.default]
+solc_version = "0.8.34"
+evm_version = "prague"
 src = "src"
 test = "test"
 out = "out"

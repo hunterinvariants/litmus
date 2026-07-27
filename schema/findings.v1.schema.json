@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/hunterinvariants/litmus/schema/findings.v1.schema.json",
+  "type": "object",
+  "required": ["schema_version", "tool", "findings"],
+  "properties": {
+    "schema_version": { "const": "1.0.0" },
+    "tool": { "type": "string", "minLength": 1 },
+    "tool_version": { "type": ["string", "null"] },
+    "source_artifact": { "type": ["string", "null"] },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["case_id", "contract", "vuln_class"],
+        "properties": {
+          "case_id": { "pattern": "^case[0-9]{3}$" },
+          "contract": { "type": "string", "minLength": 1 },
+          "function": { "type": ["string", "null"] },
+          "vuln_class": { "type": "string", "minLength": 1 },
+          "severity": { "type": ["string", "null"] },
+          "note": { "type": ["string", "null"] }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

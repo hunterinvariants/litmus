@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/hunterinvariants/litmus/schema/scorecard.v1.schema.json",
+  "type": "object",
+  "required": ["schema_version", "tool", "scope", "counts", "metrics", "limitations"],
+  "properties": {
+    "schema_version": { "const": "1.0.0" },
+    "tool": { "type": "string", "minLength": 1 },
+    "scope": {
+      "type": "object",
+      "required": ["case_ids", "cases", "ground_truth_labels", "findings"],
+      "properties": {
+        "case_ids": { "type": "array", "items": { "type": "string" } },
+        "cases": { "type": "integer", "minimum": 1 },
+        "ground_truth_labels": { "type": "integer", "minimum": 1 },
+        "findings": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "counts": {
+      "type": "object",
+      "required": ["true_positive", "false_positive", "false_negative", "duplicates"],
+      "additionalProperties": { "type": "integer", "minimum": 0 }
+    },
+    "metrics": {
+      "type": "object",
+      "required": ["precision", "recall", "f1", "false_positives_per_case"],
+      "additionalProperties": { "type": "number", "minimum": 0 }
+    },
+    "limitations": { "type": "array", "minItems": 1, "items": { "type": "string" } }
+  }
+}

@@ -1,0 +1,22 @@
+{
+    "schema_version":  "1.0.0",
+    "relationship_disclosure":  "Litmus and Aegis-7702 share the hunterinvariants maintainer; this evidence is not independent validation.",
+    "artifacts":  [
+                      {
+                          "artifact":  "evidence/raw/aegis-7702-goat.json",
+                          "sha256":  "c5b145466b0a87f00df99ccb902c98928ff6c9f6bb3b3a220879203a6bbe97b4",
+                          "source_repository":  "https://github.com/hunterinvariants/aegis-7702",
+                          "source_commit":  "bfac5ddc6ffc19d9d82a67ed14752d8755bfd630",
+                          "target_repository":  "https://github.com/theredguild/7702-goat",
+                          "target_commit":  "5626163a3ebbda450cb94df28735b8e09595a212"
+                      },
+                      {
+                          "artifact":  "evidence/raw/stock-slither-goat.json",
+                          "sha256":  "192127f4506311db73449b8b01c38524eee2a5176808fbc33161212e27140f9a",
+                          "source_repository":  "https://github.com/hunterinvariants/aegis-7702",
+                          "source_commit":  "bfac5ddc6ffc19d9d82a67ed14752d8755bfd630",
+                          "target_repository":  "https://github.com/theredguild/7702-goat",
+                          "target_commit":  "5626163a3ebbda450cb94df28735b8e09595a212"
+                      }
+                  ]
+}

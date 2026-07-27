@@ -1,0 +1,38 @@
+name: benchmark-integrity
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: litmus-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          submodules: recursive
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: "3.11"
+      - uses: foundry-rs/foundry-toolchain@b00af27efadbc7b4ca8b82abbd903b17cc874d2a # v1
+        with:
+          version: v1.7.1
+      - name: Install pinned validation dependencies
+        run: python -m pip install -r requirements-dev.txt
+      - name: Verify pinned forge-std
+        run: test "$(git -C lib/forge-std rev-parse HEAD)" = "81df7a1a97ab719d65013ab6e6369a58835b882c"
+      - name: Validate cases and reproduce evidence
+        run: |
+          python scripts/verify_evidence.py
+          git diff --exit-code
+      - name: Execute offline proof corpus
+        run: forge test -vv

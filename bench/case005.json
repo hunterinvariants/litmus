@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0.0",
+  "id": "case005",
+  "title": "EIP-7702 intentionally vulnerable delegate corpus",
+  "vuln_class": "eip7702",
+  "class_id": 9,
+  "severity": "Mixed",
+  "source": {
+    "type": "external-corpus",
+    "repository": "https://github.com/theredguild/7702-goat",
+    "commit": "5626163a3ebbda450cb94df28735b8e09595a212",
+    "path": "src",
+    "ground_truth_basis": "The upstream V0-V6 contracts are intentionally vulnerable teaching cases. Litmus defines labels from those documented cases, not from either evaluated tool's output."
+  },
+  "scan_target": "theredguild/7702-goat@5626163a3ebbda450cb94df28735b8e09595a212:src",
+  "expected": "external-corpus",
+  "ground_truth": [
+    {"contract":"DelegateContractV0","function":"execute","class":"eip7702-unprotected-entrypoint","description":"V0 exposes execution without a caller gate."},
+    {"contract":"DelegateContractV1","function":null,"class":"eip7702-constructor-state","description":"V1 relies on constructor-initialized security state that a delegated EOA never receives."},
+    {"contract":"DelegateContractV1","function":null,"class":"eip7702-storage-collision","description":"V1 uses plain delegate storage that can collide after re-delegation."},
+    {"contract":"DelegateContractV2","function":null,"class":"eip7702-constructor-state","description":"V2 retains constructor-only security state."},
+    {"contract":"DelegateContractV2","function":"initialize","class":"eip7702-recallable-initializer","description":"V2 initialization can be called again."},
+    {"contract":"DelegateContractV2","function":null,"class":"eip7702-storage-collision","description":"V2 uses plain delegate storage."},
+    {"contract":"DelegateContractV3","function":"initialize","class":"eip7702-missing-nonce","description":"V3 authorizes a replayable signed action without nonce state."},
+    {"contract":"DelegateContractV3","function":"initialize","class":"eip7702-replay-unsafe-sig","description":"V3 does not bind the signed action to a chain domain."},
+    {"contract":"DelegateContractV3","function":null,"class":"eip7702-storage-collision","description":"V3 uses plain delegate storage."},
+    {"contract":"DelegateContractV3_1","function":"initialize","class":"eip7702-missing-nonce","description":"V3.1 lacks nonce replay protection."},
+    {"contract":"DelegateContractV3_1","function":"initialize","class":"eip7702-replay-unsafe-sig","description":"V3.1 lacks chain-domain binding."},
+    {"contract":"DelegateContractV3_1","function":null,"class":"eip7702-storage-collision","description":"V3.1 uses plain delegate storage."},
+    {"contract":"DelegateContractV4","function":"initialize","class":"eip7702-missing-nonce","description":"V4 has a replayable signed action."},
+    {"contract":"DelegateContractV4","function":null,"class":"eip7702-storage-collision","description":"V4 uses plain delegate storage."},
+    {"contract":"DelegateContractV5","function":"initialize","class":"eip7702-missing-nonce","description":"V5 initialization signature lacks nonce protection."},
+    {"contract":"DelegateContractV5","function":"oneTimeSend","class":"eip7702-missing-nonce","description":"V5 one-time send is replayable without a consumed nonce."},
+    {"contract":"DelegateContractV5","function":null,"class":"eip7702-storage-collision","description":"V5 uses plain delegate storage."},
+    {"contract":"DelegateContractV6","function":null,"class":"eip7702-storage-collision","description":"V6 uses plain delegate storage."}
+  ]
+}

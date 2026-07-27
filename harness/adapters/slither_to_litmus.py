@@ -88,7 +88,7 @@ def main():
             "note": "slither: {}".format(check),
         })
 
-    json.dump({"tool": "slither", "findings": findings}, sys.stdout, indent=2)
+    json.dump({"schema_version": "1.0.0", "tool": "slither", "tool_version": None, "source_artifact": sys.argv[1], "findings": findings}, sys.stdout, indent=2)
     sys.stdout.write("\n")
 
 

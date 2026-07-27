@@ -1,0 +1,344 @@
+{
+  "schema_version": "1.0.0",
+  "tool": "slither",
+  "tool_version": "0.11.5",
+  "source_artifact": "evidence/raw/stock-slither-goat.json",
+  "findings": [
+    {
+      "case_id": "case005",
+      "contract": "<project>",
+      "function": null,
+      "vuln_class": "immutable-states",
+      "severity": "Optimization",
+      "note": "immutable-states: DelegateContractV2.init (src/DelegateContractV2.sol#24) should be immutable"
+    },
+    {
+      "case_id": "case005",
+      "contract": "<project>",
+      "function": null,
+      "vuln_class": "missing-zero-check",
+      "severity": "Low",
+      "note": "missing-zero-check: DelegateContractV5.oneTimeSend(uint256,uint256,address,uint8,bytes32,bytes32).target (src/DelegateContractV5.sol#97) lacks a zero-check on : - (success,None) = target.call{value: value}() (src/DelegateContractV5.sol#109)"
+    },
+    {
+      "case_id": "case005",
+      "contract": "<project>",
+      "function": null,
+      "vuln_class": "missing-zero-check",
+      "severity": "Low",
+      "note": "missing-zero-check: DelegateContractV6.oneTimeSend(uint256,uint256,uint256,address,uint8,bytes32,bytes32).target (src/DelegateContractV6.sol#126) lacks a zero-check on : - (success,None) = target.call{value: value}() (src/DelegateContractV6.sol#147)"
+    },
+    {
+      "case_id": "case005",
+      "contract": "<project>",
+      "function": null,
+      "vuln_class": "naming-convention",
+      "severity": "Informational",
+      "note": "naming-convention: Parameter DelegateContractV4.setPause(bool,uint256,uint8,bytes32,bytes32)._paused (src/DelegateContractV4.sol#67) is not in mixedCase"
+    },
+    {
+      "case_id": "case005",
+      "contract": "<project>",
+      "function": null,
+      "vuln_class": "naming-convention",
+      "severity": "Informational",
+      "note": "naming-convention: Parameter DelegateContractV5.setPause(bool,uint256,uint8,bytes32,bytes32)._paused (src/DelegateContractV5.sol#66) is not in mixedCase"
+    },
+    {
+      "case_id": "case005",
+      "contract": "<project>",
+      "function": null,
+      "vuln_class": "naming-convention",
+      "severity": "Informational",
+      "note": "naming-convention: Parameter DelegateContractV6.initialize(address[],uint256[],uint256,uint256,uint8,bytes32,bytes32)._nonce (src/DelegateContractV6.sol#59) is not in mixedCase"
+    },
+    {
+      "case_id": "case005",
+      "contract": "<project>",
+      "function": null,
+      "vuln_class": "naming-convention",
+      "severity": "Informational",
+      "note": "naming-convention: Parameter DelegateContractV6.oneTimeSend(uint256,uint256,uint256,address,uint8,bytes32,bytes32)._nonce (src/DelegateContractV6.sol#124) is not in mixedCase"
+    },
+    {
+      "case_id": "case005",
+      "contract": "<project>",
+      "function": null,
+      "vuln_class": "naming-convention",
+      "severity": "Informational",
+      "note": "naming-convention: Parameter DelegateContractV6.setPause(bool,uint256,uint256,uint8,bytes32,bytes32)._nonce (src/DelegateContractV6.sol#84) is not in mixedCase"
+    },
+    {
+      "case_id": "case005",
+      "contract": "<project>",
+      "function": null,
+      "vuln_class": "naming-convention",
+      "severity": "Informational",
+      "note": "naming-convention: Variable DelegateContractV4._DELEGATE_CONTRACT_ADDRESS (src/DelegateContractV4.sol#28) is not in mixedCase"
+    },
+    {
+      "case_id": "case005",
+      "contract": "<project>",
+      "function": null,
+      "vuln_class": "naming-convention",
+      "severity": "Informational",
+      "note": "naming-convention: Variable DelegateContractV5._DELEGATE_CONTRACT_ADDRESS (src/DelegateContractV5.sol#27) is not in mixedCase"
+    },
+    {
+      "case_id": "case005",
+      "contract": "<project>",
+      "function": null,
+      "vuln_class": "naming-convention",
+      "severity": "Informational",
+      "note": "naming-convention: Variable DelegateContractV6._DELEGATE_CONTRACT_ADDRESS (src/DelegateContractV6.sol#29) is not in mixedCase"
+    },
+    {
+      "case_id": "case005",
+      "contract": "DelegateContractV0",
+      "function": "execute",
+      "vuln_class": "calls-loop",
+      "severity": "Low",
+      "note": "calls-loop: DelegateContractV0.execute(DelegateContractV0.Call[]) (src/DelegateContractV0.sol#17-24) has external calls inside a loop: (success,None) = call.to.call{value: call.value}(call.data) (src/DelegateContractV0.sol#21)"
+    },
+    {
+      "case_id": "case005",
+      "contract": "DelegateContractV0",
+      "function": "execute",
+      "vuln_class": "eip7702-unprotected-entrypoint",
+      "severity": "High",
+      "note": "arbitrary-send-eth: DelegateContractV0.execute(DelegateContractV0.Call[]) (src/DelegateContractV0.sol#17-24) sends eth to arbitrary user Dangerous calls: - (success,None) = call.to.call{value: call.value}(call.data) (src/DelegateContractV0.sol#21)"
+    },
+    {
+      "case_id": "case005",
+      "contract": "DelegateContractV0",
+      "function": "execute",
+      "vuln_class": "low-level-calls",
+      "severity": "Informational",
+      "note": "low-level-calls: Low level call in DelegateContractV0.execute(DelegateContractV0.Call[]) (src/DelegateContractV0.sol#17-24): - (success,None) = call.to.call{value: call.value}(call.data) (src/DelegateContractV0.sol#21)"
+    },
+    {
+      "case_id": "case005",
+      "contract": "DelegateContractV1",
+      "function": "execute",
+      "vuln_class": "calls-loop",
+      "severity": "Low",
+      "note": "calls-loop: DelegateContractV1.execute(DelegateContractV1.Call[]) (src/DelegateContractV1.sol#39-50) has external calls inside a loop: (success,None) = call.to.call{value: call.value}(call.data) (src/DelegateContractV1.sol#45)"
+    },
+    {
+      "case_id": "case005",
+      "contract": "DelegateContractV1",
+      "function": "execute",
+      "vuln_class": "calls-loop",
+      "severity": "Low",
+      "note": "calls-loop: DelegateContractV1.execute(DelegateContractV1.Call[]) (src/DelegateContractV1.sol#39-50) has external calls inside a loop: (success,None) = call.to.call{value: call.value}(call.data) (src/DelegateContractV1.sol#45) Calls stack containing the loop: DelegateContractV1.executeGuardian(DelegateContractV1.Call[])"
+    },
+    {
+      "case_id": "case005",
+      "contract": "DelegateContractV1",
+      "function": "execute",
+      "vuln_class": "low-level-calls",
+      "severity": "Informational",
+      "note": "low-level-calls: Low level call in DelegateContractV1.execute(DelegateContractV1.Call[]) (src/DelegateContractV1.sol#39-50): - (success,None) = call.to.call{value: call.value}(call.data) (src/DelegateContractV1.sol#45)"
+    },
+    {
+      "case_id": "case005",
+      "contract": "DelegateContractV2",
+      "function": "_execute",
+      "vuln_class": "calls-loop",
+      "severity": "Low",
+      "note": "calls-loop: DelegateContractV2._execute(DelegateContractV2.Call[]) (src/DelegateContractV2.sol#51-60) has external calls inside a loop: (success,None) = call.to.call{value: call.value}(call.data) (src/DelegateContractV2.sol#55) Calls stack containing the loop: DelegateContractV2.execute(DelegateContractV2.Call[])"
+    },
+    {
+      "case_id": "case005",
+      "contract": "DelegateContractV2",
+      "function": "_execute",
+      "vuln_class": "calls-loop",
+      "severity": "Low",
+      "note": "calls-loop: DelegateContractV2._execute(DelegateContractV2.Call[]) (src/DelegateContractV2.sol#51-60) has external calls inside a loop: (success,None) = call.to.call{value: call.value}(call.data) (src/DelegateContractV2.sol#55) Calls stack containing the loop: DelegateContractV2.executeGuardian(DelegateContractV2.Call[])"
+    },
+    {
+      "case_id": "case005",
+      "contract": "DelegateContractV2",
+      "function": "_execute",
+      "vuln_class": "eip7702-unprotected-entrypoint",
+      "severity": "High",
+      "note": "arbitrary-send-eth: DelegateContractV2._execute(DelegateContractV2.Call[]) (src/DelegateContractV2.sol#51-60) sends eth to arbitrary user Dangerous calls: - (success,None) = call.to.call{value: call.value}(call.data) (src/DelegateContractV2.sol#55)"
+    },
+    {
+      "case_id": "case005",
+      "contract": "DelegateContractV2",
+      "function": "_execute",
+      "vuln_class": "low-level-calls",
+      "severity": "Informational",
+      "note": "low-level-calls: Low level call in DelegateContractV2._execute(DelegateContractV2.Call[]) (src/DelegateContractV2.sol#51-60): - (success,None) = call.to.call{value: call.value}(call.data) (src/DelegateContractV2.sol#55)"
+    },
+    {
+      "case_id": "case005",
+      "contract": "DelegateContractV3",
+      "function": "execute",
+      "vuln_class": "calls-loop",
+      "severity": "Low",
+      "note": "calls-loop: DelegateContractV3.execute(DelegateContractV3.Call[]) (src/DelegateContractV3.sol#59-70) has external calls inside a loop: (success,None) = call.to.call{value: call.value}(call.data) (src/DelegateContractV3.sol#65)"
+    },
+    {
+      "case_id": "case005",
+      "contract": "DelegateContractV3",
+      "function": "execute",
+      "vuln_class": "calls-loop",
+      "severity": "Low",
+      "note": "calls-loop: DelegateContractV3.execute(DelegateContractV3.Call[]) (src/DelegateContractV3.sol#59-70) has external calls inside a loop: (success,None) = call.to.call{value: call.value}(call.data) (src/DelegateContractV3.sol#65) Calls stack containing the loop: DelegateContractV3.executeGuardian(DelegateContractV3.Call[])"
+    },
+    {
+      "case_id": "case005",
+      "contract": "DelegateContractV3",
+      "function": "execute",
+      "vuln_class": "low-level-calls",
+      "severity": "Informational",
+      "note": "low-level-calls: Low level call in DelegateContractV3.execute(DelegateContractV3.Call[]) (src/DelegateContractV3.sol#59-70): - (success,None) = call.to.call{value: call.value}(call.data) (src/DelegateContractV3.sol#65)"
+    },
+    {
+      "case_id": "case005",
+      "contract": "DelegateContractV3_1",
+      "function": null,
+      "vuln_class": "naming-convention",
+      "severity": "Informational",
+      "note": "naming-convention: Contract DelegateContractV3_1 (src/DelegateContractV3_1.sol#14-67) is not in CapWords"
+    },
+    {
+      "case_id": "case005",
+      "contract": "DelegateContractV3_1",
+      "function": "execute",
+      "vuln_class": "calls-loop",
+      "severity": "Low",
+      "note": "calls-loop: DelegateContractV3_1.execute(DelegateContractV3_1.Call[]) (src/DelegateContractV3_1.sol#48-59) has external calls inside a loop: (success,None) = call.to.call{value: call.value}(call.data) (src/DelegateContractV3_1.sol#54)"
+    },
+    {
+      "case_id": "case005",
+      "contract": "DelegateContractV3_1",
+      "function": "execute",
+      "vuln_class": "calls-loop",
+      "severity": "Low",
+      "note": "calls-loop: DelegateContractV3_1.execute(DelegateContractV3_1.Call[]) (src/DelegateContractV3_1.sol#48-59) has external calls inside a loop: (success,None) = call.to.call{value: call.value}(call.data) (src/DelegateContractV3_1.sol#54) Calls stack containing the loop: DelegateContractV3_1.executeGuardian(DelegateContractV3_1.Call[])"
+    },
+    {
+      "case_id": "case005",
+      "contract": "DelegateContractV3_1",
+      "function": "execute",
+      "vuln_class": "low-level-calls",
+      "severity": "Informational",
+      "note": "low-level-calls: Low level call in DelegateContractV3_1.execute(DelegateContractV3_1.Call[]) (src/DelegateContractV3_1.sol#48-59): - (success,None) = call.to.call{value: call.value}(call.data) (src/DelegateContractV3_1.sol#54)"
+    },
+    {
+      "case_id": "case005",
+      "contract": "DelegateContractV4",
+      "function": "execute",
+      "vuln_class": "calls-loop",
+      "severity": "Low",
+      "note": "calls-loop: DelegateContractV4.execute(DelegateContractV4.Call[]) (src/DelegateContractV4.sol#77-88) has external calls inside a loop: (success,None) = call.to.call{value: call.value}(call.data) (src/DelegateContractV4.sol#83)"
+    },
+    {
+      "case_id": "case005",
+      "contract": "DelegateContractV4",
+      "function": "execute",
+      "vuln_class": "calls-loop",
+      "severity": "Low",
+      "note": "calls-loop: DelegateContractV4.execute(DelegateContractV4.Call[]) (src/DelegateContractV4.sol#77-88) has external calls inside a loop: (success,None) = call.to.call{value: call.value}(call.data) (src/DelegateContractV4.sol#83) Calls stack containing the loop: DelegateContractV4.executeGuardian(DelegateContractV4.Call[])"
+    },
+    {
+      "case_id": "case005",
+      "contract": "DelegateContractV4",
+      "function": "execute",
+      "vuln_class": "low-level-calls",
+      "severity": "Informational",
+      "note": "low-level-calls: Low level call in DelegateContractV4.execute(DelegateContractV4.Call[]) (src/DelegateContractV4.sol#77-88): - (success,None) = call.to.call{value: call.value}(call.data) (src/DelegateContractV4.sol#83)"
+    },
+    {
+      "case_id": "case005",
+      "contract": "DelegateContractV5",
+      "function": "execute",
+      "vuln_class": "calls-loop",
+      "severity": "Low",
+      "note": "calls-loop: DelegateContractV5.execute(DelegateContractV5.Call[]) (src/DelegateContractV5.sol#79-90) has external calls inside a loop: (success,None) = call.to.call{value: call.value}(call.data) (src/DelegateContractV5.sol#85)"
+    },
+    {
+      "case_id": "case005",
+      "contract": "DelegateContractV5",
+      "function": "execute",
+      "vuln_class": "calls-loop",
+      "severity": "Low",
+      "note": "calls-loop: DelegateContractV5.execute(DelegateContractV5.Call[]) (src/DelegateContractV5.sol#79-90) has external calls inside a loop: (success,None) = call.to.call{value: call.value}(call.data) (src/DelegateContractV5.sol#85) Calls stack containing the loop: DelegateContractV5.executeGuardian(DelegateContractV5.Call[])"
+    },
+    {
+      "case_id": "case005",
+      "contract": "DelegateContractV5",
+      "function": "execute",
+      "vuln_class": "low-level-calls",
+      "severity": "Informational",
+      "note": "low-level-calls: Low level call in DelegateContractV5.execute(DelegateContractV5.Call[]) (src/DelegateContractV5.sol#79-90): - (success,None) = call.to.call{value: call.value}(call.data) (src/DelegateContractV5.sol#85)"
+    },
+    {
+      "case_id": "case005",
+      "contract": "DelegateContractV5",
+      "function": "oneTimeSend",
+      "vuln_class": "eip7702-unprotected-entrypoint",
+      "severity": "High",
+      "note": "arbitrary-send-eth: DelegateContractV5.oneTimeSend(uint256,uint256,address,uint8,bytes32,bytes32) (src/DelegateContractV5.sol#97-111) sends eth to arbitrary user Dangerous calls: - (success,None) = target.call{value: value}() (src/DelegateContractV5.sol#109)"
+    },
+    {
+      "case_id": "case005",
+      "contract": "DelegateContractV5",
+      "function": "oneTimeSend",
+      "vuln_class": "low-level-calls",
+      "severity": "Informational",
+      "note": "low-level-calls: Low level call in DelegateContractV5.oneTimeSend(uint256,uint256,address,uint8,bytes32,bytes32) (src/DelegateContractV5.sol#97-111): - (success,None) = target.call{value: value}() (src/DelegateContractV5.sol#109)"
+    },
+    {
+      "case_id": "case005",
+      "contract": "DelegateContractV6",
+      "function": "_cleanStorage",
+      "vuln_class": "assembly",
+      "severity": "Informational",
+      "note": "assembly: DelegateContractV6._cleanStorage(uint256[]) (src/DelegateContractV6.sol#49-57) uses assembly - INLINE ASM (src/DelegateContractV6.sol#52-54)"
+    },
+    {
+      "case_id": "case005",
+      "contract": "DelegateContractV6",
+      "function": "execute",
+      "vuln_class": "calls-loop",
+      "severity": "Low",
+      "note": "calls-loop: DelegateContractV6.execute(DelegateContractV6.Call[]) (src/DelegateContractV6.sol#104-115) has external calls inside a loop: (success,None) = call.to.call{value: call.value}(call.data) (src/DelegateContractV6.sol#110)"
+    },
+    {
+      "case_id": "case005",
+      "contract": "DelegateContractV6",
+      "function": "execute",
+      "vuln_class": "calls-loop",
+      "severity": "Low",
+      "note": "calls-loop: DelegateContractV6.execute(DelegateContractV6.Call[]) (src/DelegateContractV6.sol#104-115) has external calls inside a loop: (success,None) = call.to.call{value: call.value}(call.data) (src/DelegateContractV6.sol#110) Calls stack containing the loop: DelegateContractV6.executeGuardian(DelegateContractV6.Call[])"
+    },
+    {
+      "case_id": "case005",
+      "contract": "DelegateContractV6",
+      "function": "execute",
+      "vuln_class": "low-level-calls",
+      "severity": "Informational",
+      "note": "low-level-calls: Low level call in DelegateContractV6.execute(DelegateContractV6.Call[]) (src/DelegateContractV6.sol#104-115): - (success,None) = call.to.call{value: call.value}(call.data) (src/DelegateContractV6.sol#110)"
+    },
+    {
+      "case_id": "case005",
+      "contract": "DelegateContractV6",
+      "function": "oneTimeSend",
+      "vuln_class": "eip7702-unprotected-entrypoint",
+      "severity": "High",
+      "note": "arbitrary-send-eth: DelegateContractV6.oneTimeSend(uint256,uint256,uint256,address,uint8,bytes32,bytes32) (src/DelegateContractV6.sol#122-149) sends eth to arbitrary user Dangerous calls: - (success,None) = target.call{value: value}() (src/DelegateContractV6.sol#147)"
+    },
+    {
+      "case_id": "case005",
+      "contract": "DelegateContractV6",
+      "function": "oneTimeSend",
+      "vuln_class": "low-level-calls",
+      "severity": "Informational",
+      "note": "low-level-calls: Low level call in DelegateContractV6.oneTimeSend(uint256,uint256,uint256,address,uint8,bytes32,bytes32) (src/DelegateContractV6.sol#122-149): - (success,None) = target.call{value: value}() (src/DelegateContractV6.sol#147)"
+    }
+  ]
+}

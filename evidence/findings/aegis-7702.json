@@ -1,0 +1,152 @@
+{
+  "schema_version": "1.0.0",
+  "tool": "slither-eip7702",
+  "tool_version": "1.0.0",
+  "source_artifact": "evidence/raw/aegis-7702-goat.json",
+  "findings": [
+    {
+      "case_id": "case005",
+      "contract": "DelegateContractV0",
+      "function": "execute",
+      "vuln_class": "eip7702-unprotected-entrypoint",
+      "severity": "High",
+      "note": "eip7702-unprotected-entrypoint: EIP-7702 unprotected entrypoint: DelegateContractV0.execute(DelegateContractV0.Call[]) (src/DelegateContractV0.sol#17-24) makes an arbitrary external call without checking msg.sender -- any caller can drive the delegated account."
+    },
+    {
+      "case_id": "case005",
+      "contract": "DelegateContractV1",
+      "function": null,
+      "vuln_class": "eip7702-constructor-state",
+      "severity": "Medium",
+      "note": "eip7702-constructor-state: EIP-7702 constructor-only state: DelegateContractV1.guardians (src/DelegateContractV1.sol#23) is set only in a constructor of DelegateContractV1 (src/DelegateContractV1.sol#10-58) -- it will be zero for any account that delegates to this contract (the constructor never runs for the delegating EOA). Initialize it in a guarded initializer instead."
+    },
+    {
+      "case_id": "case005",
+      "contract": "DelegateContractV1",
+      "function": null,
+      "vuln_class": "eip7702-storage-collision",
+      "severity": "Informational",
+      "note": "eip7702-storage-collision: EIP-7702 non-namespaced storage: DelegateContractV1 (src/DelegateContractV1.sol#10-58) declares 1 plain storage variable(s) and is delegate-shaped -- if this account re-delegates to a different implementation the slots can collide. Consider ERC-7201 namespaced storage."
+    },
+    {
+      "case_id": "case005",
+      "contract": "DelegateContractV2",
+      "function": null,
+      "vuln_class": "eip7702-constructor-state",
+      "severity": "Medium",
+      "note": "eip7702-constructor-state: EIP-7702 constructor-only state: DelegateContractV2.init (src/DelegateContractV2.sol#24) is set only in a constructor of DelegateContractV2 (src/DelegateContractV2.sol#10-63) -- it will be zero for any account that delegates to this contract (the constructor never runs for the delegating EOA). Initialize it in a guarded initializer instead."
+    },
+    {
+      "case_id": "case005",
+      "contract": "DelegateContractV2",
+      "function": null,
+      "vuln_class": "eip7702-storage-collision",
+      "severity": "Informational",
+      "note": "eip7702-storage-collision: EIP-7702 non-namespaced storage: DelegateContractV2 (src/DelegateContractV2.sol#10-63) declares 2 plain storage variable(s) and is delegate-shaped -- if this account re-delegates to a different implementation the slots can collide. Consider ERC-7201 namespaced storage."
+    },
+    {
+      "case_id": "case005",
+      "contract": "DelegateContractV2",
+      "function": "initialize",
+      "vuln_class": "eip7702-recallable-initializer",
+      "severity": "High",
+      "note": "eip7702-recallable-initializer: EIP-7702 re-callable initializer: DelegateContractV2.initialize(address[]) (src/DelegateContractV2.sol#31-39) sets DelegateContractV2.guardians (src/DelegateContractV2.sol#25) with no working one-shot guard -- anyone can (re-)initialize the delegated account and seize it."
+    },
+    {
+      "case_id": "case005",
+      "contract": "DelegateContractV3",
+      "function": null,
+      "vuln_class": "eip7702-storage-collision",
+      "severity": "Informational",
+      "note": "eip7702-storage-collision: EIP-7702 non-namespaced storage: DelegateContractV3 (src/DelegateContractV3.sol#12-78) declares 2 plain storage variable(s) and is delegate-shaped -- if this account re-delegates to a different implementation the slots can collide. Consider ERC-7201 namespaced storage."
+    },
+    {
+      "case_id": "case005",
+      "contract": "DelegateContractV3",
+      "function": "initialize",
+      "vuln_class": "eip7702-missing-nonce",
+      "severity": "High",
+      "note": "eip7702-missing-nonce: EIP-7702 missing replay protection: DelegateContractV3.initialize(address[],uint8,bytes32,bytes32) (src/DelegateContractV3.sol#41-57) recovers a signature but tracks no nonce -- it can be replayed against the delegated account."
+    },
+    {
+      "case_id": "case005",
+      "contract": "DelegateContractV3",
+      "function": "initialize",
+      "vuln_class": "eip7702-replay-unsafe-sig",
+      "severity": "Medium",
+      "note": "eip7702-replay-unsafe-sig: EIP-7702 chain-replayable signature: DelegateContractV3.initialize(address[],uint8,bytes32,bytes32) (src/DelegateContractV3.sol#41-57) recovers a signature whose digest binds neither block.chainid nor an EIP-712 domain separator -- it can be replayed on another chain/deployment."
+    },
+    {
+      "case_id": "case005",
+      "contract": "DelegateContractV3_1",
+      "function": null,
+      "vuln_class": "eip7702-storage-collision",
+      "severity": "Informational",
+      "note": "eip7702-storage-collision: EIP-7702 non-namespaced storage: DelegateContractV3_1 (src/DelegateContractV3_1.sol#14-67) declares 1 plain storage variable(s) and is delegate-shaped -- if this account re-delegates to a different implementation the slots can collide. Consider ERC-7201 namespaced storage."
+    },
+    {
+      "case_id": "case005",
+      "contract": "DelegateContractV3_1",
+      "function": "initialize",
+      "vuln_class": "eip7702-missing-nonce",
+      "severity": "High",
+      "note": "eip7702-missing-nonce: EIP-7702 missing replay protection: DelegateContractV3_1.initialize(address[],uint8,bytes32,bytes32) (src/DelegateContractV3_1.sol#34-46) recovers a signature but tracks no nonce -- it can be replayed against the delegated account."
+    },
+    {
+      "case_id": "case005",
+      "contract": "DelegateContractV3_1",
+      "function": "initialize",
+      "vuln_class": "eip7702-replay-unsafe-sig",
+      "severity": "Medium",
+      "note": "eip7702-replay-unsafe-sig: EIP-7702 chain-replayable signature: DelegateContractV3_1.initialize(address[],uint8,bytes32,bytes32) (src/DelegateContractV3_1.sol#34-46) recovers a signature whose digest binds neither block.chainid nor an EIP-712 domain separator -- it can be replayed on another chain/deployment."
+    },
+    {
+      "case_id": "case005",
+      "contract": "DelegateContractV4",
+      "function": null,
+      "vuln_class": "eip7702-storage-collision",
+      "severity": "Informational",
+      "note": "eip7702-storage-collision: EIP-7702 non-namespaced storage: DelegateContractV4 (src/DelegateContractV4.sol#12-96) declares 2 plain storage variable(s) and is delegate-shaped -- if this account re-delegates to a different implementation the slots can collide. Consider ERC-7201 namespaced storage."
+    },
+    {
+      "case_id": "case005",
+      "contract": "DelegateContractV4",
+      "function": "initialize",
+      "vuln_class": "eip7702-missing-nonce",
+      "severity": "High",
+      "note": "eip7702-missing-nonce: EIP-7702 missing replay protection: DelegateContractV4.initialize(address[],uint256,uint8,bytes32,bytes32) (src/DelegateContractV4.sol#48-65) recovers a signature but tracks no nonce -- it can be replayed against the delegated account."
+    },
+    {
+      "case_id": "case005",
+      "contract": "DelegateContractV5",
+      "function": null,
+      "vuln_class": "eip7702-storage-collision",
+      "severity": "Informational",
+      "note": "eip7702-storage-collision: EIP-7702 non-namespaced storage: DelegateContractV5 (src/DelegateContractV5.sol#12-114) declares 2 plain storage variable(s) and is delegate-shaped -- if this account re-delegates to a different implementation the slots can collide. Consider ERC-7201 namespaced storage."
+    },
+    {
+      "case_id": "case005",
+      "contract": "DelegateContractV5",
+      "function": "initialize",
+      "vuln_class": "eip7702-missing-nonce",
+      "severity": "High",
+      "note": "eip7702-missing-nonce: EIP-7702 missing replay protection: DelegateContractV5.initialize(address[],uint256,uint8,bytes32,bytes32) (src/DelegateContractV5.sol#47-64) recovers a signature but tracks no nonce -- it can be replayed against the delegated account."
+    },
+    {
+      "case_id": "case005",
+      "contract": "DelegateContractV5",
+      "function": "oneTimeSend",
+      "vuln_class": "eip7702-missing-nonce",
+      "severity": "High",
+      "note": "eip7702-missing-nonce: EIP-7702 missing replay protection: DelegateContractV5.oneTimeSend(uint256,uint256,address,uint8,bytes32,bytes32) (src/DelegateContractV5.sol#97-111) recovers a signature but tracks no nonce -- it can be replayed against the delegated account."
+    },
+    {
+      "case_id": "case005",
+      "contract": "DelegateContractV6",
+      "function": null,
+      "vuln_class": "eip7702-storage-collision",
+      "severity": "Informational",
+      "note": "eip7702-storage-collision: EIP-7702 non-namespaced storage: DelegateContractV6 (src/DelegateContractV6.sol#13-152) declares 2 plain storage variable(s) and is delegate-shaped -- if this account re-delegates to a different implementation the slots can collide. Consider ERC-7201 namespaced storage."
+    }
+  ]
+}
